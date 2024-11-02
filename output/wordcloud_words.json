@@ -76,9 +76,9 @@
         "australiensiska"
       ],
       "autoantikroppar",
-      "autoimmun",
+      ["autoimmun",
       "autoimmuna",
-      "autoimmunitet",
+      "autoimmunitet"],
       "autonoma",
       "avled",
       "avlidna",
@@ -99,7 +99,7 @@
       ["balance",
       "balans"],
       "baricitinib",
-      "barn",
+      ["barn", "children"],
       "barouch",
       [
         "barré",
@@ -123,6 +123,7 @@
       "biontechs"],
       "bivalenta",
       "biverkningar",
+      "bisfosfonater",
       [
         "blod",
         "blodet"
@@ -134,10 +135,10 @@
       ["blodpropp",
       "blodproppar"],
       "blodtryck",
-      "blått",
       "blödningar",
       "bnp",
       "bonncovid",
+      "borrelia",
       [
         "boost",
         "booster"
@@ -174,7 +175,7 @@
       "cfr",
       ["cfs", "me/cfs"],
       "chadox",
-      "children",
+      "chisan",
       "chloroquine",
       "cmv",
       "co2",
@@ -191,7 +192,7 @@
       "crotty",
       "curevac",
       "cytokinstorm",
-      "cytomegalovirus",
+      ["cytomegalovirus", "cmv"],
       "cytotoxiska",
       "d614g",
       "damage",
@@ -232,6 +233,7 @@
       "dygnet",
       "dysautonomi",
       "dämpar",
+      "ebna1",
       "ebvn",
       "ecmo",
       "effektivitet",
@@ -257,6 +259,8 @@
         "epstein",
         "epstein-barr"
       ],
+      "etanercept",
+      "euk-8",
       ["europa",
       "europeiska"],
       "expectancy",
@@ -289,6 +293,7 @@
       "fluvoxamid",
       "fluvoxamin",
       "fomitsmitta",
+      "fjättrad ryggmärg",
       [
         "frankrike",
         "fransk",
@@ -320,8 +325,9 @@
       "gupta",
       "gången",
       "hamstrar",
-      "handen",
       "hcq",
+      "herpes",
+      "hhv6",
       "hiv",
       [
         "hjärna",
@@ -344,6 +350,8 @@
       ],
       "holländsk",
       "hong kong",
+      "HSV1",
+      "HSV2",
       "hubei",
       "huden",
       "human",
@@ -354,17 +362,20 @@
         "hydroxychloroquine",
         "hydroxyklorokin"
       ],
+      "hypokapni",
       "hypotes",
       [
         "hämmar",
         "hämmare"
       ],
       "högt blodtryck",
+      "hörsel",
       "idrottare",
       "IgA",
       "IgG",
       "IgM",
       ["il-","interleukin", "interleukiner"],
+      "IL-1β",
       "IL-6",
       "IL-11",
       "IL-1β",
@@ -418,9 +429,13 @@
         "interferonrespons",
         "interferonresponsen"
       ],
+      "instabilitet i nackkotpelaren",
       "interstitial",
       "invasivt",
       "iq",
+      ["iranska",
+      "iransk",
+      "iran"],
       "isn",
       [
         "israel",
@@ -433,6 +448,7 @@
         "italienska"
       ],
       "iva",
+      "ivig",
       [
         "ivermectin",
         "ivermektin"
@@ -517,6 +533,8 @@
         "lungskador"
       ],
       "lupus",
+      "lymfdränage",
+      "lymf",
       "lyssnar",
       "långlivade",
       [
@@ -552,6 +570,7 @@
       ],
       "matrix",
       "maturation",
+      "me/cfs",
       "medelsvår",
       "medelålder",
       "medianålder",
@@ -580,6 +599,7 @@
       "minnesproblem", "minnesproblemen"],
       "minnesota",
       "minskar",
+      "mis-c",
       "mitokondrier",
       [
         "moderna",
@@ -607,6 +627,8 @@
         "möss",
         "mössen"
       ],
+      "nac",
+      "nackkotpelaren",
       "naltrexon",
       "nattokinas",
       "nederländsk",
@@ -624,8 +646,10 @@
       ],
       "new york",
       "nextgen",
+      "nilotinib",
       "njurar",
-      "nk",
+      "nk-celler",
+      "nkg2c+",
       "nl",
       "nordisk",
       [
@@ -663,6 +687,7 @@
         "ovaxxad",
         "ovaxxade"
       ],
+      "oxaloacetat",
       "oxford",
       [
         "parkinsonliknande",
@@ -679,13 +704,15 @@
       "petter",
       "pfizer",
       "pfizers",
-      "phenotyping (deep)",
+      "phenotyping",
       "placebo",
       "plasma",
       [
         "post covid",
         "postcovid"
       ],
+      "portugisisk",
+      "portugisiska",
       "pots",
       "preprint",
       [
@@ -731,19 +758,21 @@
       "reumatism",
       "ritonavir",
       "rna",
-      "ryggmärg",
+      ["ryggmärg", "ryggmärgen"],
       "rökning",
+      "röntgenterapi",
       "s2",
       "saliv",
       "saltvatten",
       "sars",
+      "sars2",
+      "sars-2-cov",
       "sertralin",
       [
         "serum",
         "serumstudien"
       ],
       "serumpositiva",
-      "sex",
       "shane crotty",
       "siffrorna",
       "signal",
@@ -805,6 +834,7 @@
         "statistik",
         "statistiskt"
       ],
+      "steroider",
       "stockholm",
       "strategi",
       "strukturella",
@@ -828,6 +858,7 @@
         "sydafrika",
         "sydafrikanska"
       ],
+      "sydostasien",
       "symtomatisk",
       "symtomfria",
       "symtomstart",
@@ -846,8 +877,10 @@
         "tarmflora",
         "tarmsystemet"
       ],
+      "tasigna",
       "tau",
       "temelimab",
+      "tempol",
       "testosteron",
       "tnf",
       "tokigt",
@@ -943,9 +976,9 @@
       ],
       "virusinfektioner",
       "virusvektor",
+      "virusrester",
       [
-        "vitamin",
-        "(a,b,c,d,e,k)"
+        "vitamin","vitamin a","vitamin b","vitamin c","vitamin d","vitamin e","vitamin k"
       ],
       "vivo (in vivo)",
       "vård",
@@ -959,6 +992,7 @@
         "vävnad",
         "vävnader"
       ],
+      "vzv",
       "wales",
       "who",
       "wuhan",
@@ -966,6 +1000,7 @@
       "xiannuoxin",
       "yngre",
       "ytor",
+      "zncl2",
       "zink",
       [
         "ålder",
