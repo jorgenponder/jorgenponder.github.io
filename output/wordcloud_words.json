@@ -9,6 +9,7 @@
       ["501y","501"],
       "65",
       ["95", "N-95"],
+      "abzymer",
       "acalabrutinib",
       ["ace",
       "ace2"],
@@ -31,6 +32,7 @@
       "al-aly",
       "alzheimers",
       "aminosyror",
+      "amyloid",
       "anakinra",
       "ansträngning",
       "antibiotika",
@@ -58,6 +60,7 @@
       ],
       "apkoppor",
       "appendix",
+      "aprotinin",
       [
         "aptameren",
         "aptamerer"
@@ -181,11 +184,13 @@
       "chisan",
       "chloroquine",
       "cmv",
+      "cntf",
       "co2",
       "cochrane",
       "colombia",
       ["cominarty",
       "comirnaty"],
+      "copaxone",
       [
         "coronavirusen",
         "coronaviruset"
@@ -211,6 +216,7 @@
         "deltavarianten"
       ],
       "demens",
+      "dendritiska celler",
       "depression",
       "desloratadin",
       "diabetes",
@@ -331,7 +337,7 @@
       "hamstrar",
       "hcq",
       "herpes",
-      "hhv6",
+      ["hhv6", "hhv-6a/b"],
       "hiv",
       [
         "hjärna",
@@ -513,6 +519,7 @@
       "kvinnor",
       "lab",
       "lambda",
+      "lambert-eaton syndrome",
       "life expectancy",
       "lockdowns",
       "lolamicin",
@@ -621,6 +628,7 @@
       "ms",
       "munnen",
       "musklernag",
+      "muskelfibrerna",
       "musmodell",
       [
         "mutanterna",
@@ -726,6 +734,7 @@
         "resia",
         "etheresia"
       ],
+      "prioner",
       "proppar",
       "prospektiv",
       "protect",
@@ -773,6 +782,7 @@
       "sars",
       "sars2",
       "sars-2-cov",
+      "scf",
       "sertralin",
       [
         "serum",
@@ -803,6 +813,7 @@
         "skyddet",
         "skyddseffektt"
       ],
+      "slemhinnevaccin",
       "smak",
       "smittats",
       "smittdos",
@@ -827,6 +838,7 @@
         "spansk",
         "spanska"
       ],
+      "spanska sjukan",
       "spruta",
       "sprutan",
       "sputnik",
@@ -899,6 +911,7 @@
       ],
       "trippel",
       "trypsin",
+      "tryptofan",
       "trötthet",
       "tvillingar",
       "twiv",
