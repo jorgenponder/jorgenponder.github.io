@@ -161,7 +161,7 @@ async function loadJSON() {
       const urlsHtml = note.urls.map(url => `<p><a href="${url}" target="_blank">${url}</a></p>`).join('');
   
       // Render all media URLs as images
-      const mediaHtml = note.media_urls.map(mediaUrl => `<img src="${mediaUrl}" alt="Media Image" style="max-width:100%">`).join('');
+      const mediaHtml = note.media_urls.map(mediaUrl => `<img src="${mediaUrl}" alt="Media Image" style="max-width:100%" loading="lazy">`).join('');
   
       noteDiv.innerHTML = `
         <p><strong>Created At:</strong> ${note.created_at}</p>
