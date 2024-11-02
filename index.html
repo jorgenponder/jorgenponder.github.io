@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scientific Notes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+    }
+    /* Flex container for two-column layout */
+    .container {
+      display: flex;
+      height: 80vh; /* Adjust as needed */
+      border-top: 1px solid #ddd;
+      margin-top: 20px;
+    }
+    /* Left column for tags */
+    .tags-container {
+      width: 30%; /* Adjust width as needed */
+      overflow-y: auto;
+      padding: 10px;
+      border-right: 1px solid #ddd;
+      background-color: #f1f1f1;
+    }
+    /* Right column for notes */
+    .notes-container {
+      width: 70%; /* Remaining width */
+      overflow-y: auto;
+      padding: 10px;
+    }
+    .note { 
+      margin-bottom: 20px; 
+      padding: 15px; 
+      background-color: white; 
+      border-radius: 5px; 
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+    .highlight { 
+      background-color: yellow; 
+      font-weight: bold; 
+    }
+    .tag-line { 
+      cursor: pointer; 
+      color: blue; 
+      margin-bottom: 10px; 
+      text-decoration: underline; 
+    }
+    .tag-line:hover {
+      color: darkblue;
+    }
+  </style>
+</head>
+<body>
+  <h1>Scientific Notes</h1>
+
+  <div class="container">
+    <!-- Left column for tags -->
+    <div id="tags" class="tags-container"></div>
+
+    <!-- Right column for notes -->
+    <div id="notes" class="notes-container"></div>
+  </div>
+
+  <script>
+    let notes = []; // Array to store all notes from JSON
+    let currentNotes = []; // Filtered notes to be displayed
+    let tags = []; // Array to store tags from JSON
+
+    // Load notes JSON and tags JSON
+    async function loadJSON() {
+      // Replace with the path to your JSON files
+      const notesResponse = await fetch('output/no-retweets-pruned-output-tweets-2024-10-25.json');
+      notes = await notesResponse.json();
+      currentNotes = notes; // Initial view shows all notes
+
+      const tagsResponse = await fetch('output/wordcloud_words.json');
+      const tagsData = await tagsResponse.json();
+      tags = tagsData.words;
+
+      renderTags();
+      renderNotes();
+    }
+
+    // Render tags in the left column
+    function renderTags() {
+      const tagsContainer = document.getElementById('tags');
+      tagsContainer.innerHTML = ''; // Clear previous tags
+
+      tags.forEach(tag => {
+        const tagLine = document.createElement('div');
+        tagLine.className = 'tag-line';
+
+        // If the tag is an array, join the terms with commas
+        const terms = Array.isArray(tag) ? tag.join(', ') : tag;
+
+        tagLine.textContent = terms;
+        tagLine.addEventListener('click', () => filterNotes(tag));
+        
+        tagsContainer.appendChild(tagLine);
+      });
+    }
+
+// Filter notes based on selected tag
+function filterNotes(selectedTag) {
+    const terms = Array.isArray(selectedTag) ? selectedTag : [selectedTag];
+  
+    currentNotes = notes.filter(note => 
+      terms.some(term => {
+        const regex = new RegExp(term, 'i'); // Case-insensitive regex for each term
+        return regex.test(note.full_text);
+      })
+    );
+  
+    renderNotes(terms); // Pass terms to highlight in notes
+  }
+  
+
+// Render notes in the right column
+function renderNotes(highlightTerms = []) {
+    const notesContainer = document.getElementById('notes');
+    notesContainer.innerHTML = ''; // Clear previous notes
+  
+    currentNotes.forEach(note => {
+      const noteDiv = document.createElement('div');
+      noteDiv.className = 'note';
+      
+      // Format note with highlighted terms
+      let formattedText = note.full_text;
+      highlightTerms.forEach(term => {
+        const regex = new RegExp(`(${term})`, 'gi');
+        formattedText = formattedText.replace(regex, '<span class="highlight">$1</span>');
+      });
+  
+      // Render all URLs with actual URL text
+      const urlsHtml = note.urls.map(url => `<p><a href="${url}" target="_blank">${url}</a></p>`).join('');
+  
+      // Render all media URLs as images
+      const mediaHtml = note.media_urls.map(mediaUrl => `<img src="${mediaUrl}" alt="Media Image" style="max-width:100%">`).join('');
+  
+      noteDiv.innerHTML = `
+        <p><strong>Created At:</strong> ${note.created_at}</p>
+        <p>${formattedText}</p>
+        ${urlsHtml}
+        ${mediaHtml}
+      `;
+  
+      notesContainer.appendChild(noteDiv);
+    });
+  }
+  
+
+    // Initial load of JSON data
+    loadJSON();
+  </script>
+</body>
+</html>
