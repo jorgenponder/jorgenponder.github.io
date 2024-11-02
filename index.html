@@ -10,7 +10,7 @@
       margin: 20px;
       background-color: #f9f9f9;
     }
-    h1 {
+    h1, .centered {
       text-align: center;
     }
     /* Flex container for two-column layout */
@@ -73,56 +73,76 @@
     let tags = []; // Array to store tags from JSON
 
     // Load notes JSON and tags JSON
-    async function loadJSON() {
-      // Replace with the path to your JSON files
-      const notesResponse = await fetch('output/no-retweets-pruned-output-tweets-2024-10-25.json');
-      notes = await notesResponse.json();
-      currentNotes = notes; // Initial view shows all notes
-
-      const tagsResponse = await fetch('output/wordcloud_words.json');
-      const tagsData = await tagsResponse.json();
-      tags = tagsData.words;
-
-      renderTags();
-      renderNotes();
-    }
-
-    // Render tags in the left column
-    function renderTags() {
-      const tagsContainer = document.getElementById('tags');
-      tagsContainer.innerHTML = ''; // Clear previous tags
-
-      tags.forEach(tag => {
-        const tagLine = document.createElement('div');
-        tagLine.className = 'tag-line';
-
-        // If the tag is an array, join the terms with commas
-        const terms = Array.isArray(tag) ? tag.join(', ') : tag;
-
-        tagLine.textContent = terms;
-        tagLine.addEventListener('click', () => filterNotes(tag));
-        
-        tagsContainer.appendChild(tagLine);
-      });
-    }
-
-// Filter notes based on selected tag
-function filterNotes(selectedTag) {
-    const terms = Array.isArray(selectedTag) ? selectedTag : [selectedTag];
+// Load notes JSON and tags JSON
+async function loadJSON() {
+    const notesResponse = await fetch('output/no-retweets-pruned-output-tweets-2024-10-25.json');
+    notes = await notesResponse.json();
+    currentNotes = notes; // Initial view shows all notes
   
-    currentNotes = notes.filter(note => 
-      terms.some(term => {
-        const regex = new RegExp(term, 'i'); // Case-insensitive regex for each term
-        return regex.test(note.full_text);
-      })
-    );
+    const tagsResponse = await fetch('output/wordcloud_words.json');
+    const tagsData = await tagsResponse.json();
+    tags = tagsData.words;
   
-    renderNotes(terms); // Pass terms to highlight in notes
+    renderTags();
+    
+    // Apply filter from URL fragment if present
+    applyFilterFromUrl();
   }
   
-
-// Render notes in the right column
-function renderNotes(highlightTerms = []) {
+  // Render tags in the left column
+  function renderTags() {
+    const tagsContainer = document.getElementById('tags');
+    tagsContainer.innerHTML = ''; // Clear previous tags
+  
+    tags.forEach(tag => {
+      const tagLine = document.createElement('div');
+      tagLine.className = 'tag-line';
+  
+      // If the tag is an array, join the terms with commas
+      const terms = Array.isArray(tag) ? tag.join(', ') : tag;
+  
+      tagLine.textContent = terms;
+      tagLine.addEventListener('click', () => updateFilterInUrl(tag));
+      
+      tagsContainer.appendChild(tagLine);
+    });
+  }
+  
+  // Update the URL fragment with the selected filter
+  function updateFilterInUrl(selectedTag) {
+    const terms = Array.isArray(selectedTag) ? selectedTag : [selectedTag];
+    const fragment = encodeURIComponent(terms.join(',')); // Convert terms array to URL-friendly string
+    window.location.hash = fragment; // Update the URL fragment
+    applyFilterFromUrl(); // Apply the filter based on the new URL fragment
+  }
+  
+  // Apply filter based on the URL fragment
+  function applyFilterFromUrl() {
+    const fragment = decodeURIComponent(window.location.hash.substring(1)); // Get and decode the fragment (without the #)
+    const terms = fragment ? fragment.split(',') : [];
+  
+    if (terms.length > 0) {
+      currentNotes = notes.filter(note => 
+        terms.some(term => {
+          const regex = new RegExp(term, 'i'); // Case-insensitive regex for each term
+          return regex.test(note.full_text);
+        })
+      );
+  
+      renderNotes(terms); // Pass terms to highlight in notes
+      
+      // Reset scroll position of the notes container to the top
+      const notesContainer = document.getElementById('notes');
+      notesContainer.scrollTop = 0;
+    } else {
+      // If no filter, show all notes
+      currentNotes = notes;
+      renderNotes();
+    }
+  }
+  
+  // Render notes in the right column
+  function renderNotes(highlightTerms = []) {
     const notesContainer = document.getElementById('notes');
     notesContainer.innerHTML = ''; // Clear previous notes
   
@@ -154,9 +174,9 @@ function renderNotes(highlightTerms = []) {
     });
   }
   
-
-    // Initial load of JSON data
-    loadJSON();
+  // Initial load of JSON data
+  loadJSON();
+  
   </script>
 </body>
 </html>
