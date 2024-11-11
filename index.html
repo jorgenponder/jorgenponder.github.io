@@ -78,7 +78,7 @@
       notes = await notesResponse.json();
       currentNotes = notes; // Initial view shows all notes
 
-      const tagsResponse = await fetch('output/wordcloud_words.json');
+      const tagsResponse = await fetch('output/index.json');
       const tagsData = await tagsResponse.json();
       tags = tagsData.words;
 
