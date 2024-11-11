@@ -74,7 +74,7 @@
 
     // Load notes JSON and tags JSON
     async function loadJSON() {
-      const notesResponse = await fetch('output/no-retweets-pruned-output-tweets-2024-10-25.json');
+      const notesResponse = await fetch('output/notes.json');
       notes = await notesResponse.json();
       currentNotes = notes; // Initial view shows all notes
 

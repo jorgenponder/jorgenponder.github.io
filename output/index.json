@@ -533,6 +533,7 @@
     "fluvoxamid",
     "fluvoxamin",
     "fomitsmitta",
+    "forxiga",
     [
       "fransk",
       "franska",
@@ -557,6 +558,7 @@
     "georgia",
     "geovax",
     "glukokortikoider",
+    "glyxambi",
     "glädjande",
     "gottlieb",
     "graviditeten",
@@ -794,6 +796,7 @@
       "japansk",
       "japanska"
     ],
+    "jardiance",
     "jena",
     "jod",
     "kalifornien",
@@ -1013,7 +1016,7 @@
       "möss"
     ],
     "münchen",
-    "nac",
+    "\bnac\b",
     "nackkotpelaren",
     "naltrexon",
     "nanokroppar",
@@ -1071,7 +1074,7 @@
     ],
     "nk-celler",
     "nkg2c+",
-    "nl",
+    "\bnl\b",
     "nordisk",
     [
       "norges",
